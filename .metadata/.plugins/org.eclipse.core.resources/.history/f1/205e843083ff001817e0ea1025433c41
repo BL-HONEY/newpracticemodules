@@ -1,0 +1,19 @@
+package com.practice.algorithms;
+
+import com.resources.utility.Utility;
+
+public class CalculateDay
+{
+	public static void main(String[] args)
+	{
+	  Utility.printInstructions();	
+	  System.out.println("Enter day: ");
+	  int day = Utility.getInt();
+	  System.out.println("Enter month: ");
+	  int month = Utility.getInt();
+	  System.out.println("Enter year: ");
+	  String year = Utility.getStringAsWord();
+	  
+	  Utility.findDay(day,month,year);
+	}
+}

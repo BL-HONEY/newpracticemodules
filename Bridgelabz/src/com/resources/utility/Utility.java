@@ -17,8 +17,15 @@ package com.resources.utility;
 		public static void main(String[] args)
 		{
 	       
+           
 
-
+		}
+		
+		
+		public static char getChar()
+		{
+		  char ch = sc.next().charAt(0);
+		  return ch;
 		}
 		
 		/**
@@ -54,6 +61,12 @@ package com.resources.utility;
 			return i;	
 		}
 		
+		public static double getDouble()
+		{
+		    double	i = sc.nextDouble();
+			return i;	
+		}
+		
 		/**
 		 * Method to take number of elements for an 1D array
 		 * @return
@@ -63,6 +76,26 @@ package com.resources.utility;
 		{
 			int i = sc.nextInt();
 			return i;
+		}
+		
+		public static int[] createArray(int n)
+		{
+			int i;
+			int[] arr = new int[n];
+			System.out.println("Enter "+ n + " Elements: ");
+			for(i=0 ; i<n ; i++)
+			{
+				arr[i] = getInt();
+			}
+			return arr;
+			
+		}
+		
+		public static String[] createStringArray(String line) 
+		{
+			String[] words = line.split(" ");
+			
+			return words;
 		}
 		
 		/**
@@ -134,7 +167,7 @@ package com.resources.utility;
 			System.out.print("Elements in array is: ");
 			for(int i=0 ; i<array.length ; i++)
 			{
-				System.out.print(array[i]+ ",");
+				System.out.print(array[i]+ " ");
 			}
 			System.out.println(" ");
 		}
@@ -562,6 +595,323 @@ package com.resources.utility;
 				}
 				
 		 }
+		 
+		 /**
+		  * Method to calculate number of notes
+		  * @param amount
+		  */
+		 public static void numberOfNotes(int amount)
+		 {
+			 int i,count = 0,countnotes=0,countChange=0;
+			 int[] notes = new int[] {1000,500,100,50,10,5,2,1};
+			 int[] countNotes = new int[8];
+			 
+			 for(i=0 ; i<countNotes.length ; i++)
+			 {
+				 if(amount > notes[i])
+				 {
+					 countNotes[i] = amount/notes[i];
+					 amount = amount - notes[i]*countNotes[i];
+					 
+					 if(notes[i] > 5 && countNotes[i]!=0)
+					 {
+						countnotes = countnotes + countNotes[i]; 
+						
+					 }
+					 
+					 if(notes[i]<10 && countNotes[i]!=0)
+					 {
+						 countChange = countChange + countNotes[i]; 	 
+					 }
+				 }
+			 }
+			 printNoOfNotes(notes,countNotes);
+			 System.out.println("Minimum number of notes is "+ minimumNotes(countnotes));
+			 System.out.println("Change which you get is "+ getChange(countChange));
+
+		 }
+		 
+		 /**
+		  * Method to return change amount
+		  * @param countChange
+		  * @return
+		  */
+
+		public static int getChange(int countChange)
+		{
+		  return countChange;	
+		}
+        
+		/**
+		 * Method to print number of notes
+		 * @param notes
+		 * @param countNotes
+		 */
+		public static void printNoOfNotes(int[] notes, int[] countNotes) 
+		{
+		  int i;
+		  for(i=0 ; i < countNotes.length ; i++)
+		  {
+			  if(countNotes[i] != 0)
+			  {
+				  System.out.println(notes[i] + "  Rupees notes : " + countNotes[i]);
+			  }
+		  }
+			
+		}
+		
+		/**
+		 * Method to return minimum number of notes
+		 * @param count
+		 * @return
+		 */
+		
+		public static int minimumNotes(int count)
+		{
+			return count;
+		}
+		
+		/**
+		 * Method to find the day of the week for a given date
+		 * @param day
+		 * @param month
+		 * @param year
+		 * @return
+		 */
+		
+		public static int findDay(int day,int month,String year)
+		{
+			int result = 0;
+			String YearLastTwo = extractYearLastTwo(year);
+			int newIntYearL = Integer.parseInt(YearLastTwo);
+			
+			String YearFirstTwo = extractYearLastTwo(year);
+			int newIntYearF = Integer.parseInt(YearFirstTwo);
+			
+			if(month>0 && month<3)
+			{
+				month = month+10;
+			}else
+				if(month>2 && month<13)
+				{
+					month = month - 2;
+				}
+			
+            int x = (13*month - 1/5);
+            int y = (newIntYearL/4);
+            int z = (newIntYearF/4);
+            
+           result = ((day + x + newIntYearL + y + z + 2 * newIntYearF) % 7) ;
+           
+           return result;
+			
+		}
+		
+		/**
+		 * Method to extract last two indices of the year
+		 * @param year
+		 * @return
+		 */
+	    
+		public static String extractYearLastTwo(String year)
+		{
+			String remain = "";
+			remain = year.substring(2, year.length());
+			
+			return remain;
+		}
+		
+		/**
+		 * Method to extract first two indices of the year
+		 * @param year
+		 * @return
+		 */
+		
+		public static String extractYearFirstTwo(String year)
+		{
+			String remain = "";
+			remain = year.substring(0,3);
+			
+			return remain;
+		}
+        
+		/**
+		 * Method to decide day of the week
+		 * @param res
+		 * @return
+		 */
+		public static String decideDay(int res) 
+		{
+          switch(res)
+          {
+          case 0: return "Sunday"; 
+          
+          case 1: return "Monday"; 
+          
+          case 2: return "Tuesday"; 
+          
+          case 3: return "Wednesday"; 
+          
+          case 4: return "Thrusday"; 
+          
+          case 5: return "Friday"; 
+          
+          case 6: return "Saturday"; 
+          }
+		return "Wrong Data";
+		}
+		
+		/**
+		 * Method to print instructions for Temperature conversion 
+		 */
+
+        public static void printInstructions1()
+        {
+        	System.out.println("Enter a temperature scale ");
+            System.out.println("You have two choices : Celcius and Fahrenheit ");
+            System.out.println(" ");
+            System.out.println("Enter C if you want to convert celsius to Fahrenheit or F for vice-versa: ");
+        }
+        
+        /**
+         * Method for Temperature Conversion
+         * @param ch
+         * @param temp
+         */
+		public static void convertTemp(char ch,int temp)
+		{  
+			//Celsius to Fahrenheit
+			if(ch == 'C')
+			{
+			  int fahrenheit = (temp * 9/5) + 32 ;
+			  System.out.println("Temperature in Fahrenheit: "+ fahrenheit + " F*"); 
+			}
+			else
+			{   
+				//Fahrenheit to Celsius
+				int celsius = (temp - 32) * 5/9;
+				System.out.println("Temperature in Celsius: "+ celsius + " C*"); 
+
+			}
+			
+		}
+
+
+		public static void insertionSort(int[] arr)
+		{
+		  int i,value=0,index=0;
+		  
+		  for(i=1 ; i< arr.length ; i++)
+		  {
+			  value = arr[i];
+			  index = i-1;
+			  
+			  while(index>=0 && arr[index]>value)
+			  {
+				  
+				  arr[index+1] = arr[index];
+				  index--;
+			  }
+			  arr[index+1] = value;
+		  }
+          
+			displayElements(arr);
+		}
+
+
+		public static void insertSortSentence(String[] arr)
+		{
+			int i;
+			String value="";
+			int index=0;
+			  
+			  for(i=1 ; i< arr.length ; i++)
+			  {
+				  value = arr[i];
+				  index = i-1;
+				  
+				  while(index>=0 && arr[index].compareToIgnoreCase(value)>0)
+				  {
+					  
+					  arr[index+1] = arr[index];
+					  index--;
+				  }
+				  arr[index+1] = value;
+			  }
+	          
+				displayStrArrEle(arr);
+			
+		}
+
+
+		 public static void displayStrArrEle(String[] arr)
+		{
+			int i;
+			for(i=0 ; i< arr.length ; i++)
+			{
+				System.out.print(arr[i]+" ");
+			}
+			
+			
+		}
+
+
+		public static int findTotalAttempts(int[] coupans)
+		{
+			
+			int i,count=0;
+			int last = coupans.length;
+			while(last>0)
+			{
+				int x = rand.nextInt(10);
+			  for(i=0 ; i<last ; i++)
+			  {
+				  count++;
+				 
+				 if(x == coupans[i])
+				 {   
+					 
+					 coupans[i] = coupans[last-1];
+					 last--;
+			         break;
+				 }
+				 
+			  }
+			 
+			}
+			return count;
+			
+		}
+		
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		

@@ -1,0 +1,20 @@
+package com.practice.algorithms;
+
+import com.resources.utility.Utility;
+
+public class TempConversion 
+{
+	public static void main(String[] args) 
+	{
+      System.out.println("Enter a temperature scale ");
+      System.out.println("You have two choices : Celcius and Fahrenheit ");
+      System.out.println("Enter C for celcius or F for Farenheit ");
+      char ch = Utility.getChar();
+      
+      
+      System.out.println("Enter a value in "+ ch + "to convert: ");
+      double temp = Utility.getDouble();
+      
+      Utility.convertTemp(ch,temp);
+	}
+}
