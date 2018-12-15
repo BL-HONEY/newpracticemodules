@@ -1,0 +1,20 @@
+package com.practice.algorithms;
+
+public class NewtonSqrRoot 
+{
+
+	public static void main(String[] args)
+	{
+		
+		    
+		       
+
+		        
+		        // print out the estimate of the square root of c
+		        System.out.println(t);
+		    
+		
+
+	}
+
+}

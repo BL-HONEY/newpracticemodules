@@ -1,0 +1,20 @@
+package com.practice.algorithms;
+
+import com.resources.utility.Utility;
+
+public class BinarySearchS 
+{
+
+	public static void main(String[] args)
+	{
+		System.out.println("Enter a string in which you want to search a word :  ");
+		String st = Utility.getStringAsLine();
+		
+		String[] stArray = Utility.createStringArray(st);
+		
+		String[] sortedstArray = Utility.insertSortSentence(stArray);
+		
+
+	}
+
+}

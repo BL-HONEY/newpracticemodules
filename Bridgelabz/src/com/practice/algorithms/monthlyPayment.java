@@ -1,0 +1,18 @@
+package com.practice.algorithms;
+
+import com.resources.utility.Utility;
+
+public class monthlyPayment
+{
+	public static void main(String[] args) 
+	{
+	  int P = Integer.parseInt(args[0]);
+	  int Y = Integer.parseInt(args[1]);
+	  int R = Integer.parseInt(args[2]);
+	  
+	  int payment = Utility.calPayment(P,Y,R);
+	  
+	  System.out.println("Payment to be done in "+Y+" years: "+ payment+"Rs./permonth");
+	}
+
+}

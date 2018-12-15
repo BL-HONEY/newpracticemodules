@@ -18,7 +18,6 @@ package com.resources.utility;
 		{
 	       
            
-
 		}
 		
 		
@@ -797,7 +796,7 @@ package com.resources.utility;
 		}
 
 
-		public static void insertionSort(int[] arr)
+		public static int[] insertionSort(int[] arr)
 		{
 		  int i,value=0,index=0;
 		  
@@ -816,10 +815,11 @@ package com.resources.utility;
 		  }
           
 			displayElements(arr);
+			return arr;
 		}
 
 
-		public static void insertSortSentence(String[] arr)
+		public static String[] insertSortSentence(String[] arr)
 		{
 			int i;
 			String value="";
@@ -840,21 +840,32 @@ package com.resources.utility;
 			  }
 	          
 				displayStrArrEle(arr);
-			
+			    
+				return arr;
 		}
-
+        
+		/**
+		 * Display String a
+		 * @param arr
+		 */
 
 		 public static void displayStrArrEle(String[] arr)
 		{
 			int i;
+			System.out.println("Your sorted String elements are: ");
 			for(i=0 ; i< arr.length ; i++)
 			{
 				System.out.print(arr[i]+" ");
 			}
-			
+			System.out.println(" ");
 			
 		}
-
+         
+		 /**
+		  * Method to find total Attempts to find all coupon numbers
+		  * @param coupans
+		  * @return
+		  */
 
 		public static int findTotalAttempts(int[] coupans)
 		{
@@ -882,9 +893,267 @@ package com.resources.utility;
 			return count;
 			
 		}
+        
+		/**
+		 * Binary Search for String type
+		 * @param array
+		 * @param low
+		 * @param high
+		 * @param word
+		 * @return
+		 */
+
+		public static int binarySearchS(String[] array, int low, int high, String word) 
+		{
+			
+			if(low>high)
+			{
+				return -1;
+			}
+			int mid = (low+high)/2;
+			
+			if(array[mid].equalsIgnoreCase(word))
+			{
+				return mid;
+			}
+			
+			if(word.compareToIgnoreCase(array[mid]) <0)
+			{
+				return binarySearchS(array , low , mid-1 , word);
+			}
+			else
+			{
+				return binarySearchS(array , mid+1 ,high , word);
+			}
+			
+		}
+         
+		/**
+		 * Binary Search method for Integer type
+		 * @param nums
+		 * @param low
+		 * @param high
+		 * @param find
+		 * @return
+		 */
+
+		public static int binarySearch(int[] nums, int low, int high, int find)
+		{
+			if(low>high)
+			{
+				return -1;
+			}
+			
+			int mid = (low+high)/2;
+			
+			if(nums[mid]==find)
+			{
+				return mid;
+			}
+			
+			if(find < nums[mid])
+			{
+				return binarySearch(nums,low,mid-1,find);
+			}
+			else
+			{
+				return binarySearch(nums,mid+1,high,find);
+			}
+		}
+
+        /**
+         * Find missing deadline time and completion time for 3 tasks
+         * @param sortedDeadLines
+         */
+		public static void findCompletionTime(int[] sortedDeadLines)
+		{
+			int i , count = 0,c1=0,c2=0,c3=0;
+			int[] temp = new int[sortedDeadLines.length];
+			
+			for(i=0 ;i< sortedDeadLines.length ; i++)
+			{
+				temp[i] = sortedDeadLines[i];
+			}
+			
+			while(true)
+			{   
+				
+				if(sortedDeadLines[0] != 0)
+				{
+
+					if(sortedDeadLines[0] == 1)
+					{
+						c1 = count;
+					}
+					sortedDeadLines[0]--;
+					c1++;
+					count++;
+					
+				}
+				
+				
+				
+				if(sortedDeadLines[1] != 0)
+				{
+					if(sortedDeadLines[1] == 1)
+					{
+						c2 = count;
+					}
+					
+					sortedDeadLines[1]--;
+					c2++;
+					count++;
+					
+					
+				}
+				
+				
+				
+				if(sortedDeadLines[2] != 0)
+				{
+					if(sortedDeadLines[2] == 1)
+					{
+						c3 = count;
+					}
+					sortedDeadLines[2]--;
+					c3++;
+					count++;
+					
+					
+				}
+				
+				
+				
+				if(sortedDeadLines[0] == sortedDeadLines[1] && sortedDeadLines[1] == sortedDeadLines[2] && sortedDeadLines[0]== 0)
+				{
+					break;
+				}
+			}
+			System.out.println("count: "+count);
+			System.out.println("Completion time for Task 1: "+c1);
+			System.out.println("Completion time for Task 2: "+c2);
+			System.out.println("Completion time for Task 3: "+c3);
+			System.out.println(" ");
+			System.out.println("Deadline missed by  Task 1: "+ (c1-temp[0]));
+			System.out.println("Deadline missed by  Task 2: "+ (c2-temp[1]));
+			System.out.println("Deadline missed by  Task 3: "+ (c3-temp[2]));
+
+			
+		}
 		
-		 
-		 
+		/**
+		 * Method to convert Decimal to binary
+		 * @param n
+		 * @return
+		 */
+		
+		public static String toBinary(int n)
+		{
+			String bin="";
+			
+			while(n>0)
+			{
+			  int r=n%2;
+			  bin=r+bin;
+			  n=n/2;
+			}
+			return bin;
+		}
+
+        /**
+         * Method to find a new number using a number
+         * @param num
+         * @return
+         */
+		public static int createNew(int num)
+		{
+			return ((num & 0x0F) << 4 | (num & 0xF0) >> 4);
+			
+		}
+
+        /**
+         * Method to calculate monthly payment
+         * @param P
+         * @param Y
+         * @param R
+         * @return
+         */
+		public static int calPayment(int P, int Y, int R) 
+		{
+			int payment = 0;
+			payment = (P*R*Y)/100;
+			
+			int months = Y*12;
+			
+			int monPay = P/months;
+			int monPayWithIn = monPay + (payment/months);
+			
+			return monPayWithIn;
+		}
+
+        /**
+         * Method to calculate power
+         * @param i
+         * @param n
+         * @return
+         */
+		public static int power(int i, int n) 
+		{
+			int pow = 1;
+			
+			do {
+				
+				pow = pow*i;
+				n--;
+			}while(n!=0);
+			
+			return pow;
+		}
+		
+		/**
+		 * Method to calculate Square Root using Newton Method
+		 * @param c
+		 * @return
+		 */
+		public static double calNewtonSqrt(double c)
+		{
+			double epsilon = 1e-15;    // relative error tolerance
+	        double t = c;              // estimate of the square root of c
+
+	        // repeatedly apply Newton update step until desired precision is achieved
+	        while (Math.abs(t - c/t) > epsilon*t) {
+	            t = (c/t + t) / 2.0;
+	        }
+	        return t;
+		}
+
+         /**
+          * Method to search element
+          * @param low
+          * @param high
+          * @return
+          */
+		 public static int search(int low, int high)
+		 {
+			 
+		  if ((high - low) == 1) 
+		   {
+		     return low;
+		   }
+		  
+		   int mid = low + (high - low) / 2;
+		     
+		   System.out.println("Is it less than " + mid );
+		  
+		   if (sc.nextBoolean()) 
+		   {
+		     return search(low, mid);
+		   }
+		   else
+		   {
+		      return search(mid, high);
+		   }
+		 }
 		 
 		 
 		 
