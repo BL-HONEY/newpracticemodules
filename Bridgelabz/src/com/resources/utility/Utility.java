@@ -1117,8 +1117,10 @@ package com.resources.utility;
 		 */
 		public static double calNewtonSqrt(double c)
 		{
-			double epsilon = 1e-15;    // relative error tolerance
-	        double t = c;              // estimate of the square root of c
+			// relative error tolerance
+			double epsilon = 1e-15; 
+			 // estimate of the square root of c
+	        double t = c;             
 
 	        // repeatedly apply Newton update step until desired precision is achieved
 	        while (Math.abs(t - c/t) > epsilon*t) {
@@ -1154,6 +1156,28 @@ package com.resources.utility;
 		      return search(mid, high);
 		   }
 		 }
+
+
+		public static int[] stringToNumArray(String[] st) 
+		{
+			int n = st.length;
+			int[] num = new int[n];
+			for(int i = 0 ; i < st.length ; i++)
+			{
+				num[i] = Integer.parseInt(st[i]);
+			}
+			
+			return num;
+		}
+
+
+		public static void validate(int customers) 
+		{
+			if(customers<1)
+			{
+				System.out.println("Customers can never be 0 or less. Try again !!");
+			}
+		}
 		 
 		 
 		 
