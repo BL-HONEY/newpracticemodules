@@ -144,6 +144,7 @@ package com.resources.utility;
 		public static void display2DElements(int[][] matrix,int rowLimit,int colmLimit)
 		{
 		 System.out.print("Elements in array is: ");
+		 System.out.println("");
 		 int i,j;
 			for(i=0 ; i<rowLimit ; i++)
 			{
@@ -1183,7 +1184,35 @@ package com.resources.utility;
 		 
 		 
 		 
-		
+		public static int[] findPrime()
+		{
+			 int s1, s2, s3, flag = 0, i, j;
+	         Scanner s = new Scanner(System.in);
+	         
+	         s1 = s.nextInt();
+	        
+	         s2 = s.nextInt();
+	         for(i = s1; i <= s2; i++)
+	         {
+	             for( j = 2; j < i; j++)
+	             {
+	                 if(i % j == 0)
+	                 {
+	                     flag = 0;
+	                     break;
+	                 }
+	                 else
+	                 {
+	                     flag = 1;
+	                 }
+	             }
+	             if(flag == 1)
+	             {
+	                 System.out.println(i);
+	             }
+	         }
+	    }
+		}
 		
 		
 		

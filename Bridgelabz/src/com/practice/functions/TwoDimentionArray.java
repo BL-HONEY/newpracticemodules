@@ -17,7 +17,7 @@ import com.resources.utility.Utility;
 			int rowLimit = Utility.getInt();
 			
 			//Scan row value from user
-			System.out.println("Enter row limit ");
+			System.out.println("Enter column limit ");
 			int colmLimit = Utility.getInt();	
 			
 			//Initialize array

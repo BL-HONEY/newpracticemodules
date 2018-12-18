@@ -4,15 +4,15 @@ public class LinkedList
 {
   class Node
   {
-	  Object data;
-	  Node next;
+	   Object data;
+	   Node next;
   
 	Node(Object data)
 	{
 		this.data = data;
 	}
   }
-   Node head;
+  static Node head;
    
    public boolean add(Object item)
    {
@@ -64,7 +64,19 @@ public class LinkedList
 		   }
 		   t = t.next;
 	   }
+	   System.out.println(" ");
    }
+   
+   public  void display()
+   {
+        Node temp =head;
+        while( temp != null)
+        {
+            System.out.print(temp.data+"---->");
+            temp=temp.next;
+        }
+        System.out.println(" ");
+}
    
    public boolean search(Object item)
    {
