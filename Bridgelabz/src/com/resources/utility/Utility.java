@@ -12,12 +12,14 @@ package com.resources.utility;
 		static Scanner sc = new Scanner(System.in);
 		static Random rand = new Random();
 		  static int count1=1;
+		  static int count2=0;
 
 		
 		public static void main(String[] args)
 		{
-	       
-           
+			
+	  Utility.findAnaPrime(100, 200);
+			
 		}
 		
 		
@@ -503,7 +505,11 @@ package com.resources.utility;
 		  */
 		 
 		 public static boolean checkAnagrams(String st1 , String st2)
-			{
+			{   
+			  if(st1.length() != st2.length())
+			  {
+				  return false;
+			  }
 				st1=sort(st1);
 				st2=sort(st2);
 				
@@ -1184,14 +1190,13 @@ package com.resources.utility;
 		 
 		 
 		 
-		public static int[] findPrime()
+		public static int[] findPrime(int s1 , int s2)
 		{
-			 int s1, s2, s3, flag = 0, i, j;
+			 int count=0, flag = 0, i, j,k=0;
+			 int[] prime = new int[30];
 	         Scanner s = new Scanner(System.in);
 	         
-	         s1 = s.nextInt();
-	        
-	         s2 = s.nextInt();
+	         
 	         for(i = s1; i <= s2; i++)
 	         {
 	             for( j = 2; j < i; j++)
@@ -1199,6 +1204,7 @@ package com.resources.utility;
 	                 if(i % j == 0)
 	                 {
 	                     flag = 0;
+	                     count++;
 	                     break;
 	                 }
 	                 else
@@ -1208,17 +1214,145 @@ package com.resources.utility;
 	             }
 	             if(flag == 1)
 	             {
-	                 System.out.println(i);
+	                 prime[k++] = i;
+	             }
+	             
+	            
+	         }
+	         int[] allPrimes = new int[countPrime(s1,s2)];
+             
+             for(i=0 ; i < countPrime(s1,s2) ; i++)
+             {
+            	 if(prime[i]!=0)
+            	 {
+            		 allPrimes[i] = prime[i];
+            	 }
+             }
+	         return allPrimes;
+	    }
+		
+		public static int countPrime(int s1 , int s2)
+		{
+			 int count=0, flag = 0, i, j,k=0;
+			 int[] prime = new int[30];
+	         Scanner s = new Scanner(System.in);
+	         
+	         
+	         for(i = s1; i <= s2; i++)
+	         {
+	             for( j = 2; j < i; j++)
+	             {
+	                 if(i % j == 0)
+	                 {
+	                     flag = 0;
+	                     
+	                     break;
+	                 }
+	                 else
+	                 {
+	                     flag = 1;
+	                 }
+	             }
+	             if(flag == 1)
+	             {
+	            	 count++;
+	                 prime[k++] = i;
 	             }
 	         }
+	         return count;
 	    }
+
+
+		public static int[] findAnaPrime(int ii, int jj) 
+		{
+			int[] primes = Utility.findPrime(ii, jj);
+			int n = primes.length;
+			
+			String[] newPrimes = new String[n];
+			for(int k = 0 ; k < primes.length ; k++)
+			{   
+			  	newPrimes[k] = ""+ primes[k];
+			}
+			
+			String[] anaPrimes = new String[n];
+			int h = 0;
+
+			for(int i = 0 ; i< newPrimes.length-1 ; i++)
+
+			{
+				for(int j=i+1 ; j< newPrimes.length-1; j++)
+				{ 
+				   if(Utility.checkAnagrams(newPrimes[i] ,newPrimes[j]))
+				   {
+					   anaPrimes[h++] = newPrimes[i];
+					   anaPrimes[h++] = newPrimes[j];
+
+				   }
+				 
+			    }
+			}
+			int[] converted = new int[anaPrimes.length];
+			
+			for(int g=0 ; g<anaPrimes.length ; g++)
+			{
+				if(anaPrimes[g] != null)
+				 converted[g] = Integer.parseInt(anaPrimes[g]);
+			}
+			
+			return converted;
+			
+			
 		}
+
+
+		public static int findDay(int month, int day, int year)
+        {
+			 int y = year - (14 - month) / 12;
+		        int x = y + y/4 - y/100 + y/400;
+		        int m = month + 12 * ((14 - month) / 12) - 2;
+		        int d = (day + x + (31*m)/12) % 7;
+		        return d;
+		}
+	     
+		 public static boolean isLeapYear(int year) 
+		 {
+		        if  ((year % 4 == 0) && (year % 100 != 0)) 
+		        {
+		        	return true;
+		        }
+		        if  (year % 400 == 0)
+		        {
+		        	return true;
+		        }
+		        return false;
+		    }
+
+
+		public static void bubbleSort(int[] num) 
+		{
+		  
+			int i , j;
+			
+			for(j=0 ; j < num.length-1 ; j++)
+			{
+				for(i=0 ; i< num.length-1 ; i++)
+				{
+					if(num[i] > num[i+1])
+					{
+						int temp = num[i];
+						num[i] = num[i+1];
+						num[i+1] = temp;
+					}
+				}
+			}
+			for(i=0 ; i<num.length ; i++)
+				System.out.print(num[i]+" ");
+		}
+	}
 		
 		
-		
-		
-		
-		
+			
+			
 		
 		
 		
@@ -1238,4 +1372,4 @@ package com.resources.utility;
 		
 		
 	
-}
+
