@@ -94,8 +94,29 @@ public class LinkedList
    }
    
    
-  
-   
+   public void sort()
+   {
+	   Node prev = null;
+	   Node current = head;
+	   
+	   prev = current;
+	   current = current.next;
+	   
+	   while(current!=null)
+	   {
+		   while(prev!=null)
+		   {
+			   if((int)current.data < (int)prev.data) {
+				   
+				   Object temp =  prev.data;
+				   prev.data = current.data;
+				   current.data = temp;
+			   }
+			   prev = prev.next;
+		   }
+		   current = current.next;
+	   }
+   }
    
    
    

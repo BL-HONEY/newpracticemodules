@@ -1,7 +1,11 @@
 package com.resources.utility;
 
-	import java.util.Random;
-	import java.util.Scanner;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 	/*
 	 * Utility class for defining all methods
@@ -1347,6 +1351,75 @@ package com.resources.utility;
 			}
 			for(i=0 ; i<num.length ; i++)
 				System.out.print(num[i]+" ");
+		}
+		
+		public static void getNewString(String INPUT)
+		{
+			String REGEX1 = "<<name>>";
+			 String REGEX2 = "<<full name>>";
+			 String REPLACE1 = "Honey";
+			 String REPLACE2 = "Honey Kumar Singh";
+			 
+			 String REGEX3 = "91­xxxxxxxxxx";
+			 String REPLACE3 = "6376743232";
+			 String REGEX4 = "01/01/2016";
+
+		   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");  
+		   LocalDateTime now = LocalDateTime.now(); 
+		   String REPLACE4 = String.valueOf(dtf.format(now));
+            
+
+	      Pattern p = Pattern.compile(REGEX1);
+	      //get a matcher object
+	      Matcher m = p.matcher(INPUT);
+	      INPUT = m.replaceAll(REPLACE1);
+	     
+	     
+	      Pattern p2 = Pattern.compile(REGEX2);
+	      Matcher m2 = p2.matcher(INPUT);
+	      INPUT = m2.replaceAll(REPLACE2);
+	      
+	      
+
+	      Pattern p3 = Pattern.compile(REGEX3);
+	      Matcher m3 = p3.matcher(INPUT);
+	      INPUT = m3.replaceAll(REPLACE3);
+	     
+	      
+	      
+	      Pattern p4 = Pattern.compile(REGEX4);
+	      Matcher m4 = p4.matcher(INPUT);
+	      INPUT = m4.replaceAll(REPLACE4);
+	      System.out.println(INPUT);
+		}
+
+
+		public static void getStockData(int n) 
+		{
+			String[] name = new String[n];
+			 int[] noOfShare = new int[n];
+			 int[] price = new int[n];
+			 
+			 for(int i = 0 ; i < n ; i++)
+			 {   
+				 System.out.println("Enter name: ");
+				 name[i] = sc.next();
+				 System.out.println("Enter number of shares you own: ");
+				 noOfShare[i] = sc.nextInt();
+				 System.out.println("Enter Price of one share: ");
+				 price[i] = sc.nextInt();
+				 
+				 System.out.println();
+			 }
+			 
+			 long total = 0;
+			 System.out.println("***STOCK  REPORT***");
+			 for(int i = 0 ; i< n ; i++)
+			 {
+				 System.out.println(name[i]+" owns shares of amount "+(noOfShare[i]*price[i])+ " Rs");
+				 total += (noOfShare[i]*price[i]);
+			 }
+			System.out.println("Total Price: "+total+" Rs");
 		}
 	}
 		

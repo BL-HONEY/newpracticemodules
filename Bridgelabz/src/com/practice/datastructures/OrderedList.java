@@ -19,23 +19,26 @@ public class OrderedList
    	    System.out.print(st[i]+" "); 
    	  }
       System.out.println();
-    //  int[] nums = Utility.stringToNumArray(st);
-      
-      System.out.print("Sorted ");
-    //  int[] sortedNums = Utility.insertionSort(nums);
-      
-      String[] sortedNums = Utility.insertSortSentence(st);
-      
-      LinkedList l = new LinkedList();	  
-	 
+      int[] nums = Utility.stringToNumArray(st);
+//      
+//      System.out.print("Sorted ");
+//    //  int[] sortedNums = Utility.insertionSort(nums);
+//      
+//    //  String[] sortedNums = Utility.insertSortSentence(st);
+//      
+     LinkedList l = new LinkedList();	  
+//	 
 	  for(int i = 0 ; i < st.length ; i++)
 	 {
-		 l.add(sortedNums[i]);
+		 l.add(nums[i]);
 	 }
-	  
+//	  
 	  System.out.print("Present linked list: ");
 	  l.traverse();
 	  
+	  l.sort();
+	  
+	  l.traverse();
 	  
 	}
 
